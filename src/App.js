@@ -12,6 +12,7 @@ import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import PrivateRoute from './components/PrivateRoute';
 import RegisterPage from './pages/RegisterPage';
+import OrderPage from './pages/OrderPage';
 
 class App extends Component {
   render() {
@@ -32,6 +33,7 @@ class App extends Component {
               <Route path="/checkout" exact component={CheckoutPage} />
               <Route path="/login" exact component={LoginPage} />
               <Route path="/register" exact component={RegisterPage} />
+              <Route path="/order/:orderId" exact component={OrderPage} />
               <PrivateRoute path="/profile" exact component={ProfilePage} />
               <Route patch="**" component={() => <h1>Not Found</h1>} />
             </Switch>

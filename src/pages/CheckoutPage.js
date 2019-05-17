@@ -15,13 +15,19 @@ class CheckoutPage extends Component {
     this.props.getCartItems()
   }
 
-  onSubmit = (data) => {
-    // const { history } = this.props
+  onSubmit = async (data) => {
+    const {
+      checkout,
+      history
+    } = this.props;
     const ans = confirm('Are you sure ?')
     // history.push('/payment')
     if (ans) {
       // request checkout api (moltin)
-      console.log('checking out', data)
+      console.log('checking out')
+      const result = await checkout(data)
+      console.log('checkout success')
+      history.push(`/order/${result.id}`)
     }
   }
 
@@ -50,6 +56,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getCartItems: dispatch.cart.getCartItemsAsync,
+  checkout: dispatch.cart.checkoutAsync,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage)

@@ -80,5 +80,17 @@ export const cart = {
       await request.delete(`/carts/${cartId}/items/${payload.id}`)
       await dispatch.cart.getCartItemsAsync()
     },
+    async deleteCart(payload, rootState) {
+      const cartId = await dispatch.cart.getCartId()
+      await request.delete(`/carts/${cartId}`)
+      await dispatch.cart.getCartItemsAsync()
+    },
+    async checkoutAsync(payload, rootState) {
+      const cartId = await dispatch.cart.getCartId()
+      const result = await request.post(`/carts/${cartId}/checkout`, {
+        data: payload
+      })
+      return Promise.resolve(result.data.data)
+    },
   })
 }

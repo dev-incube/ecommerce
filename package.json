@@ -7,9 +7,12 @@
     "@rematch/persist": "^1.1.6",
     "@rematch/select": "^2.0.4",
     "axios": "^0.18.0",
+    "cors": "^2.8.5",
     "grommet": "^2.6.6",
     "grommet-icons": "^4.2.0",
+    "ratchagarn-omise.js": "https://github.com/omise/omise.js.git",
     "react": "^16.8.6",
+    "react-credit-card-input": "^1.1.5",
     "react-dom": "^16.8.6",
     "react-icons": "^3.6.1",
     "react-redux": "^7.0.3",
@@ -25,7 +28,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "globals": {
+      "Omise": "writable"
+    }
   },
   "browserslist": {
     "production": [
